@@ -2,43 +2,35 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
-const Leaders = require('../models/leaders');
+const Students = require('../models/students');
 
 
-const leaderRouter = express.Router();
+const addStudent = express.Router();
 
-leaderRouter.use(bodyParser.json());
+addStudent.use(bodyParser.json());
 
-leaderRouter.route('/')
+addStudent.route('/')
     .get((req, res, next) => {
-        Leaders.find({})
-            .then((leader) => {
-                res.statusCode = 200;
-                res.setHeader('Content-Type', 'application/json');
-                res.json(leader);
-            }, (err) => next(err))
-            .catch((err) => next(err));
+        res.statusCode = 403;
+        res.end('Put operation not supported on /addStudent');
     })
     .post((req, res, next) => {
-        Leaders.create(req.body)
-            .then((leader) => {
-                console.log('Leader created', leader);
+        Students.create(req.body)
+            .then((student) => {
+                console.log('Student created', student);
                 res.statusCode = 200;
                 res.setHeader('Content-Type', 'application/json');
-                res.json(leader);
+                res.json(student);
             }, (err) => next(err))
             .catch((err) => next(err));
     })
     .put((req, res, next) => {
         res.statusCode = 403;
-        res.end('Put operation not supported on /leaders');
+        res.end('Put operation not supported on /addStudent');
     })
     .delete((req, res, next) => {
-        Leaders.remove({})
-            .then((resp) => {
-                res.statusCode = 200;
-                res.setHeader('Content-Type', 'application/json');
-                res.json(resp);
-            }, (err) => next(err))
-            .catch((err) => next(err));
+        res.statusCode = 403;
+        res.end('Put operation not supported on /addStudent');
     });
+
+    module.exports = addStudent;

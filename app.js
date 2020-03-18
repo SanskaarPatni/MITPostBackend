@@ -15,7 +15,15 @@ var admit = require('./routes/admit');
 var studentDetails = require('./routes/studentDetails');
 var courseDetails = require('./routes/courseDetails');
 
+const mongoose = require('mongoose');
 
+const Students = require('./models/students');
+const Courses = require('./models/courses');
+const url = 'mongodb://localhost:27017/studCourServer';
+const connect = mongoose.connect(url);
+connect.then((db) => {
+  console.log('Connected correctly  to Server');
+}, (err) => { console.log(err) });
 
 var app = express();
 
@@ -31,6 +39,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/checkCourse', checkCourse);
+app.use('/checkStudent', checkStudent);
+app.use('/addCourse', addCourse);
+app.use('/addStudent', addStudent);
+app.use('/admit', admit);
+app.use('/studentDetails', studentDetails);
+app.use('/courseDetails', courseDetails);
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

@@ -4,10 +4,10 @@ const mongoose = require('mongoose');
 
 const Students = require('../models/students');
 
-const studentRouter = express.Router();
-studentRouter.use(bodyParser.json());
+const studentDetailsRouter = express.Router();
+studentDetailsRouter.use(bodyParser.json());
 
-studentRouter.route('/')
+studentDetailsRouter.route('/')
     .get((req, res, next) => {
         Students.find({})
             .then((student) => {
@@ -29,3 +29,5 @@ studentRouter.route('/')
         res.statusCode = 403;
         res.end('Delete operation not supported on /studentDetails');
     });
+
+module.exports = studentDetailsRouter;
