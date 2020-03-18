@@ -11,9 +11,10 @@ var addStudent = require('./routes/addStudent');
 var addCourse = require('./routes/addCourse');
 var checkCourse = require('./routes/checkCourse');
 var checkStudent = require('./routes/checkStudent');
-var admit = require('./routes/admit');
 var studentDetails = require('./routes/studentDetails');
 var courseDetails = require('./routes/courseDetails');
+var admit = require('./routes/admit');
+
 
 const mongoose = require('mongoose');
 
