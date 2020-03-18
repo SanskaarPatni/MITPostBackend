@@ -29,7 +29,6 @@ const courseSchema = new Schema({
         type: Number,
         required: true
     },
-
     prereqs: [prereqSchema]
 }, {
     timestamps: true
