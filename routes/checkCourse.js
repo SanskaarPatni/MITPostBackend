@@ -9,7 +9,11 @@ const checkCoursesRouter = express.Router();
 checkCoursesRouter.use(bodyParser.json());
 checkCoursesRouter.route('/')
     .get((req, res, next) => {
-        Courses.find(req.body)
+        Courses.find({
+            "name": {
+                $regex: `${req.body.name}`
+            }
+        })
             .then((courses) => {
                 res.statusCode = 200;
                 res.setHeader('Content-Type', 'application/json');

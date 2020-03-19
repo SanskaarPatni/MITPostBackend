@@ -2,14 +2,18 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
-const Student = require('../models/students');
+const Students = require('../models/students');
 
 
 const checkStudentRouter = express.Router();
 checkStudentRouter.use(bodyParser.json());
 checkStudentRouter.route('/')
     .get((req, res, next) => {
-        Students.find(req.body)
+        Students.find({
+            "name": {
+                $regex: `${req.body.name}`
+            }
+        })
             .then((students) => {
                 res.statusCode = 200;
                 res.setHeader('Content-Type', 'application/json');
@@ -20,6 +24,7 @@ checkStudentRouter.route('/')
     .post((req, res, next) => {
         res.statusCode = 403;
         res.end('Post operation not supported on /checkStudent');
+
     })
     .put((req, res, next) => {
         res.statusCode = 403;
