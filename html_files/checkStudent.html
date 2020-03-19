@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Check Student</title>
+
+<body>
+    <form>
+        <label for="fname">Enter name of the student to be searched</label><br>
+        <input type="text" id="fname" name="fname" value="Enter name"><br>
+        <input type="submit" value="Submit" id="subbtn">
+    </form>
+
+    <script>
+
+
+        var btn = document.querySelector('#subbtn');
+
+        btn.addEventListener('click', function (event) {
+            gett();
+        });
+
+        function gett() {
+
+            var name = document.querySelector('input[name="fname"]').value;
+
+            fetch('/checkStudent', {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/JSON",
+                },
+                body: JSON.stringify({
+                    name: name,
+                    year: year
+                }),
+                redirect: 'error'
+            }).then(res => {
+                if (res.ok) {
+                    console.log("Success");
+                    return res.json();
+                }
+                else {
+                    console.log("Not Successful");
+                }
+            }).then((data) => consol.log(data))
+                .catch(function (error) {
+                    alert("Internet connection error");
+                    console.log(error);
+                });
+        }
+
+
+    </script>
+</body>
+
+
+</head>
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Add Course</title>
+
+<body>
+    <form>
+        <label for="fname">Course Name</label><br>
+        <input type="text" id="fname" name="fname" value="course_name"><br>
+        <label for="year">Year</label><br>
+        <input type="number" id="year" name="year" min="1" max="4"><br><br>
+        <input type="submit" value="Submit" id="subbtn">
+    </form>
+
+    <script>
+
+
+        var btn = document.querySelector('#subbtn');
+        btn.addEventListener('click', function (event) {
+            post();
+        });
+        function post() {
+
+            var name = document.querySelector('input[name="fname"]').value;
+            var year = document.querySelector('input[name="year"]').value;
+
+            fetch('/addCourse', {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/JSON",
+                },
+                body: JSON.stringify({
+                    name: name,
+                    year: year
+                }),
+                redirect: 'error'
+            }).then(res => {
+                if (res.ok) {
+                    console.log("Success");
+                    return res.json();
+                }
+                else {
+                    console.log("Not Successful");
+                }
+            }).then((data) => consol.log(data))
+                .catch(function (error) {
+                    alert("Internet connection error");
+                    console.log(error);
+                });
+        }
+
+
+    </script>
+</body>
+
+
+</head>
+
+</html>

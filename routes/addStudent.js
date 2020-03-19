@@ -12,7 +12,7 @@ addStudent.use(bodyParser.json());
 addStudent.route('/')
     .get((req, res, next) => {
         res.statusCode = 403;
-        res.end('Put operation not supported on /addStudent');
+        res.end('Get operation not supported on /addStudent');
     })
     .post((req, res, next) => {
         Students.create(req.body)
@@ -30,7 +30,7 @@ addStudent.route('/')
     })
     .delete((req, res, next) => {
         res.statusCode = 403;
-        res.end('Put operation not supported on /addStudent');
+        res.end('Delete operation not supported on /addStudent');
     });
 
-    module.exports = addStudent;
+module.exports = addStudent;

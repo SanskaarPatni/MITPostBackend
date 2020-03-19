@@ -20,8 +20,15 @@ const mongoose = require('mongoose');
 
 const Students = require('./models/students');
 const Courses = require('./models/courses');
+
 const url = 'mongodb://localhost:27017/studCourServer';
-const connect = mongoose.connect(url);
+
+const connect = mongoose.connect(url, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true
+});
+
 connect.then((db) => {
   console.log('Connected correctly  to Server');
 }, (err) => { console.log(err) });

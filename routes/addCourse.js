@@ -12,7 +12,7 @@ addCourse.use(bodyParser.json());
 addCourse.route('/')
     .get((req, res, next) => {
         res.statusCode = 403;
-        res.end('Put operation not supported on /addCourse');
+        res.end('Get operation not supported on /addCourse');
     })
     .post((req, res, next) => {
         Courses.create(req.body)
@@ -30,7 +30,7 @@ addCourse.route('/')
     })
     .delete((req, res, next) => {
         res.statusCode = 403;
-        res.end('Put operation not supported on /addCourse');
+        res.end('Delete operation not supported on /addCourse');
     });
 
 module.exports = addCourse;
