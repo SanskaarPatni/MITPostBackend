@@ -44,14 +44,17 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+
 app.use('/checkCourse', checkCourse);
 app.use('/checkStudent', checkStudent);
+
 app.use('/addCourse', addCourse);
 app.use('/addStudent', addStudent);
+
 app.use('/admit', admit);
+
 app.use('/studentDetails', studentDetails);
 app.use('/courseDetails', courseDetails);
 
