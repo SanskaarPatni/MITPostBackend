@@ -5,7 +5,6 @@ const takesSchema = new Schema({
     course_id: {
         type: String,
         required: true,
-        unique: true
     },
 }, {
     timestamps: true

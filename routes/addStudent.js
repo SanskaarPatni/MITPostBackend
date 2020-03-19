@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const path = require('path');
 
 const Students = require('../models/students');
 
@@ -9,10 +10,12 @@ const addStudent = express.Router();
 
 addStudent.use(bodyParser.json());
 
+
 addStudent.route('/')
     .get((req, res, next) => {
-        res.statusCode = 403;
-        res.end('Get operation not supported on /addStudent');
+        return res.sendFile(path.resolve('./views/addStudent.html'));
+        /*res.statusCode = 403;
+        res.end('Get operation not supported on /addStudent');*/
     })
     .post((req, res, next) => {
         Students.create(req.body)

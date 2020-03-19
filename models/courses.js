@@ -4,7 +4,6 @@ const Schema = mongoose.Schema;
 const prereqSchema = new Schema({
     prev_id: {
         type: String,
-        unique: true,
         required: true
     },
 }, {
