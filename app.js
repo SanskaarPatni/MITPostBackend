@@ -23,7 +23,7 @@ const Courses = require('./models/courses');
 
 const url = 'mongodb://localhost:27017/studCourServer';
 
-const connect = mongoose.connect(url, {
+const connect = mongoose.connect(process.env.MONGODB_URI || url, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true
