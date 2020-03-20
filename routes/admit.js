@@ -9,7 +9,7 @@ const admitRouter = express.Router();
 
 admitRouter.use(bodyParser.json());
 admitRouter.route('/')
-    .post((req, res, next) => {
+    /*.post((req, res, next) => {
         let student = Students.find({
             "name": {
                 $regex: `${req.body.student_name}`
@@ -28,7 +28,7 @@ admitRouter.route('/')
                 res.json(student);
             }, (err) => next(err))
             .catch((err) => next(err));
-    })
+    })*/
     .get((req, res, next) => {
         res.statusCode = 403;
         res.end('Get operation not supported on /admit');
