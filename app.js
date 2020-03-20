@@ -22,8 +22,8 @@ const Students = require('./models/students');
 const Courses = require('./models/courses');
 
 const url = 'mongodb://localhost:27017/studCourServer';
-
-const connect = mongoose.connect(process.env.MONGODB_URI || url, {
+const MONGODB_URI = 'mongodb+srv://SanskaarPatni:#Sa12ns08000@cluster0-qbopz.mongodb.net/test?retryWrites=true&w=majority';
+const connect = mongoose.connect(MONGODB_URI || url, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true
