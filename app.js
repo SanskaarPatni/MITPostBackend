@@ -22,8 +22,10 @@ const Students = require('./models/students');
 const Courses = require('./models/courses');
 
 const url = 'mongodb://localhost:27017/studCourServer';
-const MONGODB_URI = 'mongodb+srv://SanskaarPatni:#Sa12ns08000@cluster0-qbopz.mongodb.net/test?retryWrites=true&w=majority';
-const connect = mongoose.connect(MONGODB_URI || url, {
+//const MONGODB_URI = 'mongodb+srv://SanskaarPatni:merrychristmas@cluster0-qbopz.mongodb.net/test?retryWrites=true&w=majority';
+//MONGODB_URI
+// url
+const connect = mongoose.connect(url, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true
